@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import "dotenv/config.js";
 import  authRoutes  from "./routes/auth.routes.js";
 import productRoutes from "./routes/product.routes.js";
+import cookieParser from 'cookie-parser';
 const app = express()
 
 app.get("/", (req, res) => {
@@ -10,6 +11,7 @@ app.get("/", (req, res) => {
 })
 
 app.use(express.json())
+app.use(cookieParser())
 app.use("/api/auth", authRoutes)
 app.use("/api/products", productRoutes)
 

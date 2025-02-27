@@ -49,11 +49,17 @@ export const login = async (req, res) => {
     res.status(200).json({
         message: "User logged in successfully",
         user, 
-        token})
+    })
 }
 
 
 export const logout = async (req, res) => {
     res.clearCookie("token")
     res.status(200).json({message: "User logged out successfully"})
+}
+
+//Show users
+export const users = async (req, res) => {
+    const users = await User.find().select("-password")
+    res.status(200).json(users)
 }
